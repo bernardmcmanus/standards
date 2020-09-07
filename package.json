@@ -1,0 +1,21 @@
+{
+  "name": "@bernardmcmanus/standards",
+  "private": true,
+  "description": "Coding standards and packages",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "scripts": {
+    "postinstall": "lerna bootstrap --hoist",
+    "publish": "lerna publish from-package --loglevel silly --no-verify-access --yes"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "rimraf": "^3.0.2"
+  }
+}

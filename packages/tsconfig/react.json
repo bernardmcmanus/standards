@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"]
+  }
+}
