@@ -1,0 +1,20 @@
+{
+  "name": "@bernardmcmanus/eslint-plugin",
+  "version": "1.0.0",
+  "description": "Custom eslint rules",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/eslint-plugin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "lodash.memoize": "^4.1.2"
+  },
+  "peerDependencies": {
+    "eslint-plugin-import": "^2"
+  }
+}

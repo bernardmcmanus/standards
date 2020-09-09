@@ -1,0 +1,16 @@
+{
+  "name": "@bernardmcmanus/prettier-config",
+  "version": "1.0.0",
+  "description": "Common prettier configuration",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/prettier-config",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "peerDependencies": {
+    "prettier": "^1 || ^2"
+  }
+}

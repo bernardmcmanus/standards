@@ -1,0 +1,29 @@
+{
+  "name": "@bernardmcmanus/eslint-config-js",
+  "version": "1.0.0",
+  "description": "Common eslint configuration for JavaScript projects",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/eslint-config-js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "dependencies": {
+    "@bernardmcmanus/eslint-plugin": "^1.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-simple-import-sort": "^5.0.2",
+    "eslint-plugin-sort-keys-fix": "^1.0.1"
+  },
+  "peerDependencies": {
+    "eslint": "^6"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
+}
