@@ -11,11 +11,13 @@
     "npm": ">=6"
   },
   "scripts": {
+    "format": "prettier --write --config packages/prettier-config/index.js '**/*.{js,md,ts,y?aml}'",
     "postinstall": "lerna bootstrap --hoist",
     "publish": "lerna publish from-package --loglevel silly --no-verify-access --yes"
   },
   "devDependencies": {
     "lerna": "^3.22.1",
+    "prettier": "^2.1.1",
     "rimraf": "^3.0.2"
   }
 }

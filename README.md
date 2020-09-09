@@ -7,16 +7,17 @@
 1. Make your changes and submit a pull request. DO NOT bump package versions.
 
 2. Once your pull request has been approved and merged:
-    ```bash
-    # Fetch the latest from upstream
-    git fetch upstream
 
-    # Switch to master
-    git checkout master
+   ```bash
+   # Fetch the latest from upstream
+   git fetch upstream
 
-    # Hard reset to upstream/master
-    git reset --hard upstream/master
-    ```
+   # Switch to master
+   git checkout master
+
+   # Hard reset to upstream/master
+   git reset --hard upstream/master
+   ```
 
 3. Run `npx lerna version` to bump versions for changed packages
 
@@ -34,11 +35,13 @@ npx lerna version [target]
 ```
 
 ## Build and Test
+
 ```bash
 make
 ```
 
 ## Publish
+
 ```bash
 make publish
 ```

@@ -1,15 +1,15 @@
-const { rules: airbnbBaseStyleRules } = require('eslint-config-airbnb-base/rules/style');
-const { rules: airbnbBaseVariableRules } = require('eslint-config-airbnb-base/rules/variables');
+const {
+	rules: airbnbBaseStyleRules,
+} = require('eslint-config-airbnb-base/rules/style');
+const {
+	rules: airbnbBaseVariableRules,
+} = require('eslint-config-airbnb-base/rules/variables');
 
 const IMPORT_EXTENSIONS = ['.js'];
 
 module.exports = {
 	parser: 'babel-eslint',
-	plugins: [
-		'babel',
-		'simple-import-sort',
-		'sort-keys-fix'
-	],
+	plugins: ['babel', 'simple-import-sort', 'sort-keys-fix'],
 	extends: [
 		'airbnb-base',
 		'airbnb-base/rules/strict',
@@ -17,7 +17,7 @@ module.exports = {
 		'plugin:import/warnings',
 		'plugin:@bernardmcmanus/eslint-plugin/default',
 		'prettier',
-		'prettier/standard'
+		'prettier/standard',
 	],
 	rules: {
 		'@bernardmcmanus/no-extraneous-dependencies': [
@@ -28,67 +28,43 @@ module.exports = {
 					'**/*.spec.*',
 					'**/*.stories.*',
 					'**/stories/*',
-					'{.storybook,dev,scripts,test,webpack}/**'
-				]
-			}
+					'{.storybook,dev,scripts,spec,test,webpack}/**',
+				],
+			},
 		],
 		'simple-import-sort/sort': [
 			'error',
 			{
-				"groups": [
+				groups: [
 					// Side-effects
-					["^\\u0000"],
+					['^\\u0000'],
 					// Builtins
-					[`^(${require("module").builtinModules.join("|")})(/|$)`],
+					[`^(${require('module').builtinModules.join('|')})(/|$)`],
 					// Scoped NPM Packages
-					["^@?\\w"],
+					['^@?\\w'],
 					// NPM Packages
-					["^[^.]"],
+					['^[^.]'],
 					// Local Paths
-					["^\\."]
-				]
-			}
+					['^\\.'],
+				],
+			},
 		],
 		'arrow-body-style': [
 			'error',
 			'as-needed',
-			{ requireReturnForObjectLiteral: false }
+			{ requireReturnForObjectLiteral: false },
 		],
 		'babel/no-invalid-this': 'error',
-		camelcase: [
-			'error',
-			{
-				properties: 'never',
-				allow: ['^UNSAFE_']
-			}
-		],
 		curly: ['error', 'all'],
 		'import/extensions': [
 			'error',
 			'ignorePackages',
 			{
-				css: 'always',
-				gif: 'always',
-				graphql: 'always',
-				gql: 'always',
-				hbs: 'always',
-				html: 'always',
-				jpeg: 'always',
-				jpg: 'always',
 				js: 'never',
-				json: 'always',
 				jsx: 'never',
-				less: 'always',
-				png: 'always',
-				pug: 'always',
-				sass: 'always',
-				scss: 'always',
-				svg: 'always',
 				ts: 'never',
 				tsx: 'never',
-				yaml: 'always',
-				yml: 'always'
-			}
+			},
 		],
 		/**
 		 * Ignore imports with a resource query (i.e. icon.svg?inline)
@@ -98,8 +74,8 @@ module.exports = {
 			{
 				caseSensitive: true,
 				commonjs: true,
-				ignore: [/\.\w+\?/.source]
-			}
+				ignore: [/\.\w+\?/.source],
+			},
 		],
 		'import/order': 'off',
 		/**
@@ -114,8 +90,8 @@ module.exports = {
 			'error',
 			'always',
 			{
-				exceptAfterSingleLine: true
-			}
+				exceptAfterSingleLine: true,
+			},
 		],
 		'max-classes-per-file': 'off',
 		'new-cap': ['error', { newIsCap: true, capIsNew: false, properties: true }],
@@ -124,12 +100,13 @@ module.exports = {
 		'no-fallthrough': [
 			'error',
 			{
-				commentPattern: /falls?\s?through|break[\s\w]+omitted/.source
-			}
+				commentPattern: /falls?\s?through|break[\s\w]+omitted/.source,
+			},
 		],
 		'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
 		'no-restricted-syntax': airbnbBaseStyleRules['no-restricted-syntax'].filter(
-			value => typeof value !== 'object' || value.selector !== 'ForOfStatement'
+			(value) =>
+				typeof value !== 'object' || value.selector !== 'ForOfStatement',
 		),
 		'no-underscore-dangle': [
 			'error',
@@ -141,53 +118,53 @@ module.exports = {
 					'__app_config__',
 					'__preloaded_state__',
 					'__webpack_public_path__',
-					'__webpack_nonce__'
+					'__webpack_nonce__',
 				],
 				allowAfterThis: true,
 				allowAfterSuper: false,
-				enforceInMethodNames: false
-			}
+				enforceInMethodNames: false,
+			},
 		],
 		'no-use-before-define': [
 			'error',
 			{
 				...airbnbBaseVariableRules['no-use-before-define'][1],
-				functions: false
-			}
+				functions: false,
+			},
 		],
 		quotes: [
 			'error',
 			'single',
 			{
 				allowTemplateLiterals: false,
-				avoidEscape: true
-			}
+				avoidEscape: true,
+			},
 		],
 		'sort-imports': 'off',
 		'sort-keys-fix/sort-keys-fix': [
 			'error',
 			'asc',
-			{ caseSensitive: false, natural: true }
-		]
+			{ caseSensitive: false, natural: true },
+		],
 	},
 	overrides: [
 		{
-			files: ['test/**'],
+			files: ['{spec,test}/**'],
 			env: {
 				jasmine: true,
-				jest: true
-			}
-		}
+				jest: true,
+			},
+		},
 	],
 	settings: {
 		'import/parsers': {
-			'babel-eslint': ['.js']
+			'babel-eslint': ['.js'],
 		},
 		'import/resolver': {
 			node: {
-				extensions: [...IMPORT_EXTENSIONS, '.json']
-			}
+				extensions: [...IMPORT_EXTENSIONS, '.json'],
+			},
 		},
-		'import/extensions': IMPORT_EXTENSIONS
-	}
+		'import/extensions': IMPORT_EXTENSIONS,
+	},
 };

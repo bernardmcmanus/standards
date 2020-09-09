@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/tsconfig",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Common Typescript configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -12,6 +12,6 @@
   },
   "main": "tsconfig.json",
   "peerDependencies": {
-    "typescript": "^3"
+    "typescript": "^3 || ^4"
   }
 }

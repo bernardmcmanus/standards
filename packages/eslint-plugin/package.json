@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-plugin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Custom eslint rules",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -15,6 +15,7 @@
     "lodash.memoize": "^4.1.2"
   },
   "peerDependencies": {
+    "eslint": "^6 || ^7",
     "eslint-plugin-import": "^2"
   }
 }

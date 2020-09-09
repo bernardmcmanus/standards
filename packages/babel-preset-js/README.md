@@ -6,51 +6,49 @@
 
 1. Install `@bernardmcmanus/babel-preset-js`:
 
-    ```
-    npm i @bernardmcmanus/babel-preset-js -D
-    ```
+   ```
+   npm i @bernardmcmanus/babel-preset-js -D
+   ```
 
 2. <br/>
 
-    a. _Simple_ - Add `@bernardmcmanus/babel-preset-js` to your project's `babel.config.js`:
+   a. _Simple_ - Add `@bernardmcmanus/babel-preset-js` to your project's `babel.config.js`:
 
-    ```js
-    module.exports = {
-        presets: [
-            '@bernardmcmanus/babel-preset-js'
-        ]
-    };
-    ```
+   ```js
+   module.exports = {
+   	presets: ['@bernardmcmanus/babel-preset-js'],
+   };
+   ```
 
-    b. _Advanced_ - Configure `@bernardmcmanus/babel-preset-js` in your project's `babel.config.js`:
+   b. _Advanced_ - Configure `@bernardmcmanus/babel-preset-js` in your project's `babel.config.js`:
 
-    ```js
-    module.exports = {
-        presets: [
-            [
-                '@bernardmcmanus/babel-preset-js',
-                {
-                    /**
-                     * Optionally use compilation targets specified in a browserslist configuration
-                     * @see https://github.com/bernardmcmanus/standards/tree/master/packages/browserslist-config
-                     */
-                    browser: true,
-                    /**
-                     * An options object for @babel/preset-env
-                     * Default values are shown below
-                     * @see https://babeljs.io/docs/en/babel-preset-env#options
-                     */
-                    env: {
-                        targets: {
-                            node: 'current'
-                        },
-                        useBuiltIns: 'usage'
-                    }
-                }
-            ]
-        ]
-    };
-    ```
+   ```js
+   module.exports = {
+   	presets: [
+   		[
+   			'@bernardmcmanus/babel-preset-js',
+   			{
+   				/**
+   				 * Optionally use compilation targets specified in a browserslist configuration
+   				 * @see https://github.com/bernardmcmanus/standards/tree/master/packages/browserslist-config
+   				 */
+   				browser: true,
+   				/**
+   				 * An options object for @babel/preset-env
+   				 * Default values are shown below
+   				 * @see https://babeljs.io/docs/en/babel-preset-env#options
+   				 */
+   				env: {
+   					targets: {
+   						node: 'current',
+   					},
+   					useBuiltIns: 'usage',
+   				},
+   			},
+   		],
+   	],
+   };
+   ```
 
 ## Example Configurations
 
@@ -58,9 +56,7 @@
 
 ```js
 module.exports = {
-    presets: [
-        '@bernardmcmanus/babel-preset-js'
-    ]
+	presets: ['@bernardmcmanus/babel-preset-js'],
 };
 ```
 
@@ -68,19 +64,19 @@ module.exports = {
 
 ```js
 module.exports = {
-    presets: [
-        [
-            '@bernardmcmanus/babel-preset-js',
-            {
-                browser: true,
-                env: {
-                    // Disable module compilation so
-                    // webpack can optimize the bundle
-                    modules: false
-                }
-            }
-        ]
-    ]
+	presets: [
+		[
+			'@bernardmcmanus/babel-preset-js',
+			{
+				browser: true,
+				env: {
+					// Disable module compilation so
+					// webpack can optimize the bundle
+					modules: false,
+				},
+			},
+		],
+	],
 };
 ```
 

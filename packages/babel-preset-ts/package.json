@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/babel-preset-ts",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Common babel configuration for TypeScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -11,11 +11,11 @@
     "npm": ">=6.9"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.3.3",
-    "@bernardmcmanus/babel-preset-js": "^1.0.0"
+    "@babel/preset-typescript": "^7.10.4",
+    "@bernardmcmanus/babel-preset-js": "^0.1.0"
   },
   "peerDependencies": {
     "@babel/core": "^7",
-    "typescript": "^3"
+    "typescript": "^3 || ^4"
   }
 }

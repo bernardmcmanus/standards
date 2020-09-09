@@ -5,7 +5,7 @@ const get = require('lodash.get');
 const memoize = require('lodash.memoize');
 const parent = require('eslint-plugin-import/lib/rules/no-extraneous-dependencies');
 
-const dirHasPackageJSON = memoize(dir => {
+const dirHasPackageJSON = memoize((dir) => {
 	const pkg = Path.join(dir, 'package.json');
 	return fs.existsSync(pkg);
 });
@@ -13,7 +13,7 @@ const dirHasPackageJSON = memoize(dir => {
 function createPackageDirSet(input) {
 	const result = new Set();
 	const values = Array.isArray(input) ? input : [input];
-	values.forEach(v => {
+	values.forEach((v) => {
 		if (v) {
 			result.add(Path.resolve(v));
 		}
@@ -24,7 +24,13 @@ function createPackageDirSet(input) {
 module.exports = {
 	...parent,
 	create(context) {
-		if (!get(context, ['settings', '@bernardmcmanus/no-extraneous-dependencies', 'monorepo'])) {
+		if (
+			!get(context, [
+				'settings',
+				'@bernardmcmanus/no-extraneous-dependencies',
+				'monorepo',
+			])
+		) {
 			// No special configuration needed
 			return parent.create(context);
 		}
@@ -42,7 +48,7 @@ module.exports = {
 
 		context.options[0] = {
 			...originalOpts,
-			packageDir: Array.from(packageDir)
+			packageDir: Array.from(packageDir),
 		};
 
 		// Create the rule object using modified options
@@ -52,5 +58,5 @@ module.exports = {
 		context.options[0] = originalOpts;
 
 		return result;
-	}
+	},
 };
