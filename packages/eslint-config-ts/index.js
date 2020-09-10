@@ -13,6 +13,11 @@ console.log({
 		'plugin:@typescript-eslint/recommended',
 		'prettier/@typescript-eslint',
 	],
+	parser: '@typescript-eslint/parser',
+	parserOptions: {
+		ecmaVersion: 2020,
+		sourceType: 'module'
+	},
 	rules: {
 		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 		'@typescript-eslint/explicit-function-return-type': [
