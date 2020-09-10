@@ -10,7 +10,6 @@ module.exports = {
 	extends: [
 		'@bernardmcmanus/eslint-config-js',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended',
 		'prettier/@typescript-eslint',
 	],
 	parser: '@typescript-eslint/parser',
@@ -18,6 +17,9 @@ module.exports = {
 		ecmaVersion: 2020,
 		sourceType: 'module'
 	},
+	plugins: [
+		'typescript-sort-keys'
+	],
 	reportUnusedDisableDirectives: true,
 	rules: {
 		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
@@ -47,13 +49,17 @@ module.exports = {
 				argsIgnorePattern: '^_',
 			},
 		],
-		'@typescript-eslint/prefer-includes': 'error',
+
 		// Enable when these are fixable
 		// '@typescript-eslint/prefer-nullish-coalescing': 'error',
 		// '@typescript-eslint/prefer-optional-chain': 'error',
-		'@typescript-eslint/prefer-readonly': 'error',
-		'@typescript-eslint/prefer-reduce-type-parameter': 'error',
-		'@typescript-eslint/prefer-string-starts-ends-with': 'error',
+
+		// These require additional configuration / are incompatible with JS. Disabling for now
+		// '@typescript-eslint/prefer-includes': 'error',
+		// '@typescript-eslint/prefer-readonly': 'error',
+		// '@typescript-eslint/prefer-reduce-type-parameter': 'error',
+		// '@typescript-eslint/prefer-string-starts-ends-with': 'error',
+
 		'typescript-sort-keys/interface': 'error',
 		'typescript-sort-keys/string-enum': 'error',
 	},
