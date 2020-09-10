@@ -6,7 +6,7 @@ const spacedCommentRule = airbnbBaseStyleConfig.rules['spaced-comment'];
 const spacedCommentConfig = spacedCommentRule.slice(0, -1);
 const [spacedCommentOptions] = spacedCommentRule.slice(-1);
 
-console.log({
+module.exports = {
 	extends: [
 		'@bernardmcmanus/eslint-config-js',
 		'plugin:@typescript-eslint/recommended',
@@ -18,6 +18,7 @@ console.log({
 		ecmaVersion: 2020,
 		sourceType: 'module'
 	},
+	reportUnusedDisableDirectives: true,
 	rules: {
 		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 		'@typescript-eslint/explicit-function-return-type': [
@@ -104,4 +105,4 @@ console.log({
 		},
 		'import/extensions': IMPORT_EXTENSIONS,
 	},
-});
+};

@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/lint-staged-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Custom lint-staged configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -11,6 +11,6 @@
     "npm": ">=6.9"
   },
   "peerDependencies": {
-    "lint-staged": "^9 | ^10"
+    "lint-staged": "^9 || ^10"
   }
 }
