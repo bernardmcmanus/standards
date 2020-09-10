@@ -28,7 +28,7 @@ module.exports = {
 					'**/*.spec.*',
 					'**/*.stories.*',
 					'**/stories/*',
-					'{.storybook,dev,scripts,spec,test,webpack}/**',
+					'**/{.storybook,dev,scripts,spec,test,webpack}/**',
 				],
 			},
 		],
