@@ -1,0 +1,21 @@
+{
+  "name": "@bernardmcmanus/babel-preset-react",
+  "version": "0.1.0",
+  "description": "Common babel configuration for react projects",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/babel-preset-react",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.10.4",
+    "@bernardmcmanus/babel-preset-ts": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7",
+    "react": "^16"
+  }
+}

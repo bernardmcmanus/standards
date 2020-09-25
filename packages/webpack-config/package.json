@@ -1,0 +1,61 @@
+{
+  "name": "@bernardmcmanus/webpack-config",
+  "version": "0.1.0",
+  "description": "Common webpack configuration",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/webpack-config",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@bernardmcmanus/babel-preset-react": "^0.1.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.0",
+    "glob": "^7.1.6",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "html-webpack-plugin": "^4.5.0",
+    "html-webpack-tags-plugin": "^2.0.17",
+    "koa": "^2.13.0",
+    "koa-conditional-get": "^3.0.0",
+    "koa-etag": "^4.0.0",
+    "koa-logger": "^3.2.1",
+    "koa-mount": "^4.0.0",
+    "koa-static": "^5.0.0",
+    "koa-webpack": "^6.0.0",
+    "loader-utils": "^2.0.0",
+    "lodash": "^4.17.20",
+    "mini-css-extract-plugin": "^0.11.2",
+    "object-hash": "^2.0.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss-loader": "^4.0.2",
+    "resolve-url-loader": "^3.1.1",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^10.0.2",
+    "script-ext-html-webpack-plugin": "^2.1.4",
+    "style-loader": "^1.2.1",
+    "svg-inline-loader": "^0.8.2",
+    "terser-webpack-plugin": "^4.2.2",
+    "thread-loader": "^3.0.0",
+    "ts-loader": "^8.0.4",
+    "url-loader": "^4.1.0",
+    "webpack": "5.0.0-rc.0",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-cli": "4.0.0-rc.0",
+    "yargs-parser": "^20.2.0"
+  },
+  "optionalDependencies": {
+    "node-sass": "^4.14.1",
+    "typescript": "^4.0.2"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7",
+    "node-sass": "^4",
+    "typescript": "^3 || ^4"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@bernardmcmanus/eslint-config-react",
+  "version": "0.1.0",
+  "description": "Common eslint configuration for React projects",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/eslint-config-react",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "dependencies": {
+    "@bernardmcmanus/eslint-config-ts": "^0.1.4",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2"
+  },
+  "peerDependencies": {
+    "eslint": "^6 || ^7",
+    "react": "^16",
+    "typescript": "^3 || ^4"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "react": "^16.13.1",
+    "typescript": "^4.0.2"
+  }
+}
