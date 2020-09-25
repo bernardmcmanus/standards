@@ -65,9 +65,15 @@ module.exports = {
 	},
 	overrides: [
 		{
+			files: ['**/*.js'],
+			rules: {
+				'@typescript-eslint/explicit-function-return-type': 'off',
+			},
+		},
+		{
 			files: ['**/*.ts'],
 			rules: {
-				'@typescript-eslint/explicit-member-accessibility': 'error',
+				'@typescript-eslint/explicit-member-accessibility': 'error'
 			},
 		},
 		{
@@ -94,9 +100,16 @@ module.exports = {
 			},
 		},
 		{
-			files: ['{spec,test}/**'],
+			files: ['{dev,scripts,spec,test}/**'],
 			rules: {
 				'@typescript-eslint/no-non-null-assertion': 'off',
+			},
+		},
+		{
+			files: ['{dev,scripts}/**'],
+			rules: {
+				'@typescript-eslint/no-var-requires': 'off',
+				'no-console': 'off'
 			},
 		},
 	],

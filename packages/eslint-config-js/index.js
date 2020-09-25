@@ -19,12 +19,17 @@ module.exports = {
 		'prettier',
 		'prettier/standard',
 	],
+	ignorePatterns: [
+		'**/coverage/**',
+		'**/dist/**',
+		'**/__generated__/**'
+	],
 	rules: {
 		'@bernardmcmanus/no-extraneous-dependencies': [
 			'error',
 			{
 				devDependencies: [
-					'*.config.*',
+					'**/*.config.*',
 					'**/*.spec.*',
 					'**/*.stories.*',
 					'**/stories/*',
