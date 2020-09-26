@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const { _: [key, ...rest], ...flags } = require('yargs-parser')(process.argv.slice(2));
+
+const runScript = require('../lib');
+
+if (flags.silent) {
+	process.env.NPM_SCRIPTS_SILENT = 1;
+}
+
+switch (true) {
+	case Boolean(flags.help):
+	case Boolean(flags.h):
+	case key === 'help':
+	case !key:
+		runScript.help();
+		break;
+	default:
+		runScript(key, rest, {
+			...flags,
+			silent: Boolean(process.env.NPM_SCRIPTS_SILENT)
+		});
+		break;
+}

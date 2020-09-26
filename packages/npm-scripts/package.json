@@ -1,0 +1,36 @@
+{
+  "name": "@bernardmcmanus/npm-scripts",
+  "version": "0.1.0",
+  "description": "Opinionated scripts for npm projects",
+  "repository": "github:bernardmcmanus/standards",
+  "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+  "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/npm-scripts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6.9"
+  },
+  "bin": {
+    "npm-scripts": "./bin/npm-scripts"
+  },
+  "dependencies": {
+    "debug": "^4.2.0",
+    "lodash": "^4.17.20",
+    "nodemon": "^2.0.4",
+    "object-hash": "^2.0.3",
+    "rimraf": "^3.0.2",
+    "table": "^6.0.3",
+    "yargs-parser": "^20.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@bernardmcmanus/webpack-config": "^0.1.0",
+    "eslint": "^7.8.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.1",
+    "stylelint": "^13.7.2",
+    "typescript": "^4.0.2",
+    "webpack-cli": "^4.0.0-rc.0"
+  }
+}

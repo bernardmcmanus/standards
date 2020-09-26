@@ -80,7 +80,7 @@ module.exports = configLoader('dll', {
 		new CleanWebpackPlugin({ verbose: true }),
 		new DefinePlugin({ 'process.browser': true }),
 		new DllPlugin({
-			name: '__iron_dll',
+			name: '__webpack_dll',
 			path: Path.resolve('dist/static/dll/.manifest.[id].json')
 		}),
 		new ProgressPlugin(),
