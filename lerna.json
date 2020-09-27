@@ -11,8 +11,8 @@
       ]
     },
     "version": {
-      "allowBranch": ["master", "next"],
-      "gitRemote": ["origin", "upstream"]
+      "allowBranch": ["master"],
+      "gitRemote": ["origin"]
     }
   },
   "packages": [
