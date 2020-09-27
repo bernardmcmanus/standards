@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/babel-preset-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Common babel configuration for JavaScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -21,8 +21,8 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "core-js": "^3.6.5"
-	},
-	"peerDependencies": {
+  },
+  "peerDependencies": {
     "@babel/core": "^7",
     "core-js": "^2 || ^3"
   }

@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/browserslist-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Common browserslist configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",

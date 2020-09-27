@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-config-js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Common eslint configuration for JavaScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -11,7 +11,7 @@
     "npm": ">=6.9"
   },
   "dependencies": {
-    "@bernardmcmanus/eslint-plugin": "^0.1.0",
+    "@bernardmcmanus/eslint-plugin": "^0.1.1",
     "babel-eslint": "^10.0.3",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-prettier": "^6.11.0",
