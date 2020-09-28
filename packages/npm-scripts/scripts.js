@@ -5,9 +5,61 @@ const { ConcurrentSet, SequentialSet, Script } = require('./lib/script');
 
 const exporter = createExporter(exports);
 
-/**
- * @babel/cli
- */
+const eslint = exporter('eslint', () => new Script({
+	cmd: 'eslint',
+	args: [
+		'--ext', '.js,.jsx,.ts,.tsx',
+		'--cache',
+		'--cache-location', 'node_modules/.cache/eslint/',
+		'--max-warnings=0',
+		'--report-unused-disable-directives'
+	]
+}))();
+
+const prettier = exporter('prettier', () => new Script({
+	cmd: 'prettier'
+}))();
+
+const stylelint = exporter('stylelint', () => new Script({
+	cmd: 'stylelint',
+	args: [
+		'--ignore-path', '.eslintignore',
+		'--cache',
+		'--cache-location', 'node_modules/.cache/stylelint/',
+		'--max-warnings=0'
+	]
+}))();
+
+const nodemon = exporter('nodemon', () => new Script({
+	cmd: 'bash',
+	args: [
+		'-c',
+		`nodemon --config <(node -e 'console.log(JSON.stringify(require("${require.resolve('./lib/nodemon')}"), null, 2))')`
+	],
+	appendExtrasToLastArg: true,
+	conditions: [
+		{
+			cmd: 'which',
+			args: ['nodemon']
+		}
+	]
+}))();
+
+const webpack = exporter('webpack', () => new Script({
+	cmd: 'bash',
+	args: [
+		'-c',
+		'node -r esm `which webpack`'
+	],
+	appendExtrasToLastArg: true,
+	conditions: [
+		{
+			cmd: 'which',
+			args: ['webpack']
+		}
+	]
+}))();
+
 exporter('babel', () => new Script({
 	cmd: 'babel',
 	args: [
@@ -55,20 +107,6 @@ exporter('clean:all', () => new ConcurrentSet([
 ]));
 
 /**
- * eslint
- */
-exporter('eslint', () => new Script({
-	cmd: 'eslint',
-	args: [
-		'--ext', '.js,.jsx,.ts,.tsx',
-		'--cache',
-		'--cache-location', 'node_modules/.cache/eslint/',
-		'--max-warnings=0',
-		'--report-unused-disable-directives'
-	]
-}));
-
-/**
  * Run eslint, stylelint, and prettier
  */
 exporter('format', () => new SequentialSet([
@@ -81,6 +119,9 @@ exporter('format', () => new SequentialSet([
 				'--',
 				'--fix'
 			],
+			conditions: [
+				eslint
+			],
 			onError: noop
 		},
 		{
@@ -92,10 +133,7 @@ exporter('format', () => new SequentialSet([
 				'--fix'
 			],
 			conditions: [
-				{
-					cmd: 'which',
-					args: ['stylelint']
-				}
+				stylelint
 			],
 			onError: noop,
 			type: Script.OPTIONAL
@@ -108,6 +146,9 @@ exporter('format', () => new SequentialSet([
 			'--',
 			'--write',
 			'.'
+		],
+		conditions: [
+			prettier
 		],
 		onError: noop
 	}
@@ -122,6 +163,9 @@ exporter('lint', () => new ConcurrentSet([
 		args: [
 			'eslint',
 			'.'
+		],
+		conditions: [
+			eslint
 		]
 	},
 	{
@@ -132,6 +176,9 @@ exporter('lint', () => new ConcurrentSet([
 			'--list-different',
 			'.'
 		],
+		conditions: [
+			prettier
+		]
 	},
 	{
 		cmd: 'npm-scripts',
@@ -140,10 +187,7 @@ exporter('lint', () => new ConcurrentSet([
 			'**/*.{css,less,sass,scss}'
 		],
 		conditions: [
-			{
-				cmd: 'which',
-				args: ['stylelint']
-			}
+			stylelint
 		],
 		type: Script.OPTIONAL
 	},
@@ -153,30 +197,6 @@ exporter('lint', () => new ConcurrentSet([
 		type: Script.OPTIONAL
 	},
 ]));
-
-/**
- * nodemon
- */
-const nodemon = exporter('nodemon', () => new Script({
-	cmd: 'bash',
-	args: [
-		'-c',
-		`nodemon --config <(node -e 'console.log(JSON.stringify(require("${require.resolve('./lib/nodemon')}"), null, 2))')`
-	],
-	conditions: [
-		{
-			cmd: 'which',
-			args: ['nodemon']
-		}
-	]
-}))();
-
-/**
- * prettier
- */
-exporter('prettier', () => new Script({
-	cmd: 'prettier'
-}));
 
 /**
  * start development server
@@ -195,37 +215,6 @@ exporter('start', () => new Script({
 }));
 
 /**
- * stylelint
- */
-exporter('stylelint', () => new Script({
-	cmd: 'stylelint',
-	args: [
-		'--ignore-path', '.eslintignore',
-		'--cache',
-		'--cache-location', 'node_modules/.cache/stylelint/',
-		'--max-warnings=0'
-	]
-}));
-
-/**
- * webpack
- */
-const webpack = exporter('webpack', () => new Script({
-	cmd: 'node',
-	args: [
-		'-r',
-		'esm',
-		'`which webpack`'
-	],
-	conditions: [
-		{
-			cmd: 'which',
-			args: ['webpack']
-		}
-	]
-}))();
-
-/**
  * start webpack dev server
  */
 exporter('webpack:start', () => new Script({
@@ -235,14 +224,12 @@ exporter('webpack:start', () => new Script({
 		() => require.resolve('@bernardmcmanus/webpack-config/server')
 	],
 	conditions: [
+		nodemon,
 		webpack
 	]
 }));
 
-/**
- * webpack build app
- */
-exporter('webpack:build:app', () => new Script({
+const webpackBuildApp = exporter('webpack:build:app', () => new Script({
 	cmd: 'npm-scripts',
 	args: [
 		'webpack',
@@ -256,12 +243,9 @@ exporter('webpack:build:app', () => new Script({
 	env: ({ NODE_ENV }) => ({
 		NODE_ENV: NODE_ENV || 'production'
 	})
-}));
+}))();
 
-/**
- * webpack build dll
- */
-exporter('webpack:build:dll', () => new Script({
+const webpackBuildDll = exporter('webpack:build:dll', () => new Script({
 	cmd: 'npm-scripts',
 	args: [
 		'webpack',
@@ -275,11 +259,13 @@ exporter('webpack:build:dll', () => new Script({
 	env: ({ NODE_ENV }) => ({
 		NODE_ENV: NODE_ENV || 'production'
 	})
-}));
+}))();
 
-/**
- * webpack postinstall
- */
+exporter('webpack:build', () => new SequentialSet([
+	webpackBuildApp,
+	webpackBuildDll,
+]));
+
 exporter('webpack:postinstall', () => new Script({
 	cmd: 'npm-scripts',
 	args: [

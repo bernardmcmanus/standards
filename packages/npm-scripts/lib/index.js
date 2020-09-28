@@ -5,7 +5,7 @@ const debug = require('./debug');
 const scripts = require('../scripts');
 
 function runScript(identifier, args, flags) {
-	const key = snakeCase(identifier);
+	const key = snakeCase(identifier).replace(/_/g, ':');
 	const script = scripts[key];
 
 	if (!script) {
@@ -37,11 +37,11 @@ async function help() {
 	console.log('USAGE: npm-scripts <identifier> [...args]\n');
 
 	const commands = await Promise.all(
-		Object.keys(scripts).map(async key => {
+		Object.keys(scripts).sort().map(async key => {
 			const script = scripts[key];
 			const score = await script.getRunnableScore();
 
-			debug({key, score});
+			debug({ key, score });
 
 			let icon;
 			switch (true) {

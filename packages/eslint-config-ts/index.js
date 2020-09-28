@@ -60,6 +60,19 @@ module.exports = {
 		// '@typescript-eslint/prefer-reduce-type-parameter': 'error',
 		// '@typescript-eslint/prefer-string-starts-ends-with': 'error',
 
+		'@typescript-eslint/no-use-before-define': [
+			'error',
+			{
+				functions: false,
+				classes: true,
+				enums: true,
+				typedefs: true,
+				variables: true,
+				ignoreTypeReferences: true
+			}
+		],
+		'no-use-before-define': 'off',
+
 		'typescript-sort-keys/interface': 'error',
 		'typescript-sort-keys/string-enum': 'error',
 	},

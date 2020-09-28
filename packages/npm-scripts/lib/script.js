@@ -13,6 +13,7 @@ class Script {
 		cmd,
 		onError,
 		args = [],
+		appendExtrasToLastArg = false,
 		conditions = [],
 		cacheable = false,
 		silent = false,
@@ -31,6 +32,7 @@ class Script {
 		this.cacheable = cacheable;
 		this.silent = silent;
 		this.type = type;
+		this.appendExtrasToLastArg = appendExtrasToLastArg;
 
 		this.conditions = new ConcurrentSet(
 			[
@@ -69,23 +71,38 @@ class Script {
 				PATH: `${Path.resolve('node_modules/.bin')}:${process.env.PATH}`
 			})
 		});
+
+		Object.defineProperty(this, 'name', {
+			get: once(() => {
+				const ignore = new Set(['bash', '-c', 'node', 'npm-scripts', 'npx']);
+				return [this.cmd, ...this.args]
+					.find(value => !ignore.has(value))
+					.split(' ')[0];
+			})
+		});
 	}
 
-	getArgs = once(
-		(extras = []) =>
-			[...this.args, ...extras].map(arg => {
-				switch (typeof arg) {
-					case 'function':
-						try {
-							return arg();
-						} catch (err) {
-							return err;
-						}
-					default:
-						return arg;
-				}
-			})
-	)
+	getArgs = once((extras = []) => {
+		const resolvedArgs = [
+			...this.args,
+			...(this.appendExtrasToLastArg ? [] : extras)
+		].map(arg => {
+			switch (typeof arg) {
+				case 'function':
+					try {
+						return arg();
+					} catch (err) {
+						return err;
+					}
+				default:
+					return arg;
+			}
+		});
+		if (this.appendExtrasToLastArg) {
+			resolvedArgs[resolvedArgs.length - 1] = `${resolvedArgs[resolvedArgs.length - 1]} ${extras.join(' ')}`;
+		}
+		return resolvedArgs;
+	});
 
 	getRunnableScore = once(async () => {
 		let result = 2;
@@ -98,7 +115,7 @@ class Script {
 			}
 		}
 		return result;
-	})
+	});
 
 	command(extras = []) {
 		return compact(`${this.cmd} ${this.getArgs(extras).join(' ')}`);
@@ -174,18 +191,7 @@ class AbstractSet {
 
 	command(extras = []) {
 		return this.scripts
-			.map(script => `${
-				(() => {
-					if (script.type === Script.OPTIONAL) {
-						return `${
-							script.conditions.scripts
-								.map(conditionScript => conditionScript.command())
-								.join(' && ')
-						} && `;
-					}
-					return '';
-				})()
-			}${script.command(extras)}`)
+			.map(script => script.command(extras))
 			.join(' && ');
 	}
 }
