@@ -16,11 +16,12 @@ const createRandomColorizer = memoize(label => {
 	const i = random(0, 16);
 	const j = random (0, 16);
 	const code = (i * 16 + j);
-	return text => {
+	return line => {
 		if (supportsColor.stdout) {
-			return `\x1b[38;5;${code}m${label}\x1b[0m${text}`;
+			const text = stripAnsi(line).replace(`${label} `, '');
+			return `\x1b[38;5;${code}m${label} \x1b[0m${text}`;
 		}
-		return text;
+		return line;
 	};
 });
 
@@ -63,16 +64,8 @@ class Executor {
 				await Promise.all([
 					this.process.stdout && (async () => {
 						for await (const line of chunksToLinesAsync(this.process.stdout)) {
-							// const prefix = `[${script.name}] `;
-							// process.stdout.write(
-							// 	`${
-							// 		line.trim().length > 0 ? this.colorize(prefix) : ''
-							// 	}${
-							// 		stripAnsi(line).replace(prefix, '')
-							// 	}`
-							// );
 							process.stdout.write(
-								line.trim().length > 0 ? this.colorize(stripAnsi(line).replace(/^\[([^\]]+)\]/, '')) : ''
+								line.trim().length > 0 ? this.colorize(line) : ''
 							);
 						}
 					})(),
