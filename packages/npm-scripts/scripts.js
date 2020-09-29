@@ -17,7 +17,18 @@ const eslint = exporter('eslint', () => new Script({
 }))();
 
 const prettier = exporter('prettier', () => new Script({
-	cmd: 'prettier'
+	cmd: 'bash',
+	args: [
+		'-c',
+		'exec prettier'
+	],
+	appendExtrasToLastArg: true,
+	conditions: [
+		{
+			cmd: 'which',
+			args: ['prettier']
+		}
+	]
 }))();
 
 const stylelint = exporter('stylelint', () => new Script({
@@ -34,7 +45,7 @@ const nodemon = exporter('nodemon', () => new Script({
 	cmd: 'bash',
 	args: [
 		'-c',
-		`nodemon --config <(node -e 'console.log(JSON.stringify(require("${require.resolve('./lib/nodemon')}"), null, 2))')`
+		`exec nodemon --config <(node -e 'console.log(JSON.stringify(require("${require.resolve('./lib/nodemon')}"), null, 2))')`
 	],
 	appendExtrasToLastArg: true,
 	conditions: [
@@ -49,13 +60,26 @@ const webpack = exporter('webpack', () => new Script({
 	cmd: 'bash',
 	args: [
 		'-c',
-		'node -r esm `which webpack`'
+		'exec node -r esm `which webpack`'
 	],
 	appendExtrasToLastArg: true,
 	conditions: [
 		{
 			cmd: 'which',
 			args: ['webpack']
+		}
+	]
+}))();
+
+const tsc = exporter('tsc', () => new Script({
+	cmd: 'tsc',
+	conditions: [
+		{
+			cmd: 'bash',
+			args: [
+				'-c',
+				'[ -f tsconfig.json ] || exit 1'
+			]
 		}
 	]
 }))();
@@ -115,8 +139,9 @@ exporter('format', () => new SequentialSet([
 			cmd: 'npm-scripts',
 			args: [
 				'eslint',
-				'.',
+				'--label',
 				'--',
+				'.',
 				'--fix'
 			],
 			conditions: [
@@ -128,8 +153,9 @@ exporter('format', () => new SequentialSet([
 			cmd: 'npm-scripts',
 			args: [
 				'stylelint',
-				'**/*.{css,less,sass,scss}',
+				'--label',
 				'--',
+				'**/*.{css,less,sass,scss}',
 				'--fix'
 			],
 			conditions: [
@@ -143,6 +169,7 @@ exporter('format', () => new SequentialSet([
 		cmd: 'npm-scripts',
 		args: [
 			'prettier',
+			'--label',
 			'--',
 			'--write',
 			'.'
@@ -162,6 +189,8 @@ exporter('lint', () => new ConcurrentSet([
 		cmd: 'npm-scripts',
 		args: [
 			'eslint',
+			'--label',
+			'--',
 			'.'
 		],
 		conditions: [
@@ -172,6 +201,7 @@ exporter('lint', () => new ConcurrentSet([
 		cmd: 'npm-scripts',
 		args: [
 			'prettier',
+			'--label',
 			'--',
 			'--list-different',
 			'.'
@@ -184,6 +214,8 @@ exporter('lint', () => new ConcurrentSet([
 		cmd: 'npm-scripts',
 		args: [
 			'stylelint',
+			'--label',
+			'--',
 			'**/*.{css,less,sass,scss}'
 		],
 		conditions: [
@@ -192,8 +224,16 @@ exporter('lint', () => new ConcurrentSet([
 		type: Script.OPTIONAL
 	},
 	{
-		cmd: 'tsc',
-		args: ['--noEmit'],
+		cmd: 'npm-scripts',
+		args: [
+			'tsc',
+			'--label',
+			'--',
+			'--noEmit'
+		],
+		conditions: [
+			tsc
+		],
 		type: Script.OPTIONAL
 	},
 ]));

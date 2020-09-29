@@ -74,7 +74,7 @@ class Script {
 
 		Object.defineProperty(this, 'name', {
 			get: once(() => {
-				const ignore = new Set(['bash', '-c', 'node', 'npm-scripts', 'npx']);
+				const ignore = new Set(['bash', '-c', 'node', 'npm-scripts', 'npx', 'exec']);
 				return [this.cmd, ...this.args]
 					.find(value => !ignore.has(value))
 					.split(' ')[0];
@@ -121,11 +121,11 @@ class Script {
 		return compact(`${this.cmd} ${this.getArgs(extras).join(' ')}`);
 	}
 
-	run(extras, cb) {
+	run(extras, cb, options) {
 		const executor = this.cacheable
 			? Executor.memo(this)
 			: new Executor(this);
-		return executor.run(extras, cb);
+		return executor.run(extras, cb, options);
 	}
 }
 
@@ -197,17 +197,17 @@ class AbstractSet {
 }
 
 class ConcurrentSet extends AbstractSet {
-	async run(extras, cb) {
+	async run(extras, cb, options) {
 		await Promise.all(
-			this.scripts.map(script => script.run(extras, cb))
+			this.scripts.map(script => script.run(extras, cb, { label: true, ...options }))
 		);
 	}
 }
 
 class SequentialSet extends AbstractSet {
-	async run(extras, cb) {
+	async run(extras, cb, options) {
 		for (const script of this.scripts) {
-			await script.run(extras, cb);
+			await script.run(extras, cb, options);
 		}
 	}
 }

@@ -7,7 +7,6 @@ const random = require('lodash/random');
 const truncate = require('lodash/truncate');
 const hash = require('object-hash');
 const { chunksToLinesAsync } = require('@rauschma/stringio');
-const supportsColor = require('supports-color');
 const stripAnsi = require('strip-ansi');
 
 const debug = require('./debug');
@@ -17,11 +16,8 @@ const createRandomColorizer = memoize(label => {
 	const j = random (0, 16);
 	const code = (i * 16 + j);
 	return line => {
-		if (supportsColor.stdout) {
-			const text = stripAnsi(line).replace(`${label} `, '');
-			return `\x1b[38;5;${code}m${label} \x1b[0m${text}`;
-		}
-		return line;
+		const text = stripAnsi(line).replace(`${label} `, '');
+		return `\x1b[38;5;${code}m${label} \x1b[0m${text}`;
 	};
 });
 
@@ -43,7 +39,7 @@ class Executor {
 		this.script = script;
 		this.colorize = createRandomColorizer(`[${script.name}]`);
 
-		this.run = once(async (extras = [], cb = noop) => {
+		this.run = once(async (extras = [], cb = noop, { color, label } = {}) => {
 			const command = script.command(extras);
 			const shortCommand = truncate(command, { length: 40 });
 
@@ -55,7 +51,7 @@ class Executor {
 					script.getArgs(extras),
 					{
 						env: script.env(),
-						stdio: script.silent ? 'ignore' : ['ignore', 'pipe', process.stderr]
+						stdio: script.silent ? 'ignore' : [process.stdin, 'pipe', 'pipe']
 					}
 				);
 
@@ -63,10 +59,27 @@ class Executor {
 
 				await Promise.all([
 					this.process.stdout && (async () => {
-						for await (const line of chunksToLinesAsync(this.process.stdout)) {
-							process.stdout.write(
-								line.trim().length > 0 ? this.colorize(line) : ''
-							);
+						if (label) {
+							for await (const line of chunksToLinesAsync(this.process.stdout)) {
+								process.stdout.write(
+									color && line.trim().length > 0 ? this.colorize(line) : line
+								);
+							}
+						} else {
+							this.process.stdout.pipe(process.stdout);
+						}
+					})(),
+					this.process.stderr && (async () => {
+						if (script.type !== Script.OPTIONAL) {
+							if (label) {
+								for await (const line of chunksToLinesAsync(this.process.stderr)) {
+									process.stderr.write(
+										color && line.trim().length > 0 ? this.colorize(line) : line
+									);
+								}
+							} else {
+								this.process.stderr.pipe(process.stderr);
+							}
 						}
 					})(),
 					new Promise((resolve, reject) => {

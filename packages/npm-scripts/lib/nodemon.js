@@ -29,6 +29,7 @@ module.exports = mergeWith(
 			tsx: 'node --require ts-node/register'
 		}
 	},
+	mainConfig ? require(mainConfig) : {},
 	(objValue, srcValue) => {
 		if (Array.isArray(objValue)) {
 			return Array.from(new Set(objValue.concat(srcValue)));

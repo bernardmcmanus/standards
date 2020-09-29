@@ -4,7 +4,7 @@ const { table } = require('table');
 const debug = require('./debug');
 const scripts = require('../scripts');
 
-function runScript(identifier, args, flags) {
+function runScript(identifier, args, { color, label, silent }) {
 	const key = snakeCase(identifier).replace(/_/g, ':');
 	const script = scripts[key];
 
@@ -12,7 +12,7 @@ function runScript(identifier, args, flags) {
 		throw new Error(`No such script '${identifier}'`);
 	}
 
-	if (flags.silent) {
+	if (silent) {
 		debug(`> ${script.command(args)}\n`);
 	} else {
 		process.stderr.write(`> ${script.command(args)}\n\n`);
@@ -22,7 +22,7 @@ function runScript(identifier, args, flags) {
 		process.on('exit', () => {
 			cp.kill();
 		});
-	})
+	}, { color, label })
 	.catch(err => {
 		if (err.exitCode) {
 			debug(err.stack);
