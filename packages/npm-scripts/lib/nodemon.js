@@ -1,6 +1,6 @@
 const mergeWith = require('lodash/mergeWith');
 
-let mainConfig = {};
+let mainConfig;
 
 try {
 	mainConfig = require.resolve('./nodemon.json', {

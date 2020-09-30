@@ -43,6 +43,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 'off',
 		'@typescript-eslint/no-empty-interface': 'warn',
 		'@typescript-eslint/no-explicit-any': 'error',
+		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-unused-vars': [
 			'error',
 			{
@@ -71,6 +72,7 @@ module.exports = {
 				ignoreTypeReferences: true
 			}
 		],
+		'no-shadow': 'off',
 		'no-use-before-define': 'off',
 
 		'typescript-sort-keys/interface': 'error',
@@ -78,13 +80,13 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ['**/*.js'],
+			files: ['**/*.js?(x)'],
 			rules: {
 				'@typescript-eslint/explicit-function-return-type': 'off',
 			},
 		},
 		{
-			files: ['**/*.ts'],
+			files: ['**/*.ts?(x)'],
 			rules: {
 				'@typescript-eslint/explicit-member-accessibility': 'error'
 			},
