@@ -13,9 +13,9 @@
     "moduleResolution": "node",
     "noEmit": false,
     "noUnusedLocals": true,
-    "outDir": "dist",
     "resolveJsonModule": true,
     "skipLibCheck": false,
+    "sourceMap": true,
     "strict": true,
     "target": "es2019"
   }
