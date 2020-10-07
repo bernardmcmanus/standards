@@ -47,7 +47,10 @@ module.exports = {
 		'@typescript-eslint/no-unused-vars': [
 			'error',
 			{
+				args: 'all',
 				argsIgnorePattern: '^_',
+				vars: 'all',
+				varsIgnorePattern: '^_',
 			},
 		],
 
@@ -72,8 +75,12 @@ module.exports = {
 				ignoreTypeReferences: true
 			}
 		],
+		'@typescript-eslint/no-useless-constructor': 'error',
+
 		'no-shadow': 'off',
+		'no-unused-vars': 'off',
 		'no-use-before-define': 'off',
+		'no-useless-constructor': 'off',
 
 		'typescript-sort-keys/interface': 'error',
 		'typescript-sort-keys/string-enum': 'error',
