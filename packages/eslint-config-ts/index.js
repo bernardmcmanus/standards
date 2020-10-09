@@ -90,6 +90,7 @@ module.exports = {
 			files: ['**/*.js?(x)'],
 			rules: {
 				'@typescript-eslint/explicit-function-return-type': 'off',
+				'@typescript-eslint/no-var-requires': 'off',
 			},
 		},
 		{
@@ -122,15 +123,14 @@ module.exports = {
 			},
 		},
 		{
-			files: ['{dev,scripts,spec,test}/**'],
+			files: ['{dev,mocks,scripts,spec,test}/**'],
 			rules: {
 				'@typescript-eslint/no-non-null-assertion': 'off',
 			},
 		},
 		{
-			files: ['{dev,scripts}/**'],
+			files: ['{dev,mocks,scripts}/**'],
 			rules: {
-				'@typescript-eslint/no-var-requires': 'off',
 				'no-console': 'off'
 			},
 		},
