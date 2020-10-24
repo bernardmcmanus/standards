@@ -6,6 +6,7 @@ module.exports = ({ use = [], ...rest } = {}) => ({
 			options: {
 				compilerOptions: {
 					module: 'esnext',
+					noEmit: true,
 					target: 'es2020'
 				}
 			}
