@@ -76,8 +76,8 @@ class Script {
 			get: once(() => {
 				const ignore = new Set(['bash', '-c', 'node', 'npm-scripts', 'npx', 'exec']);
 				return [this.cmd, ...this.args]
-					.find(value => !ignore.has(value))
-					.split(' ')[0];
+					.flatMap(value => value.split(' '))
+					.find(value => !ignore.has(value));
 			})
 		});
 	}
