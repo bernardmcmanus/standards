@@ -302,8 +302,8 @@ const webpackBuildDll = exporter('webpack:build:dll', () => new Script({
 }))();
 
 exporter('webpack:build', () => new SequentialSet([
-	webpackBuildApp,
 	webpackBuildDll,
+	webpackBuildApp,
 ]));
 
 exporter('webpack:postinstall', () => new Script({
