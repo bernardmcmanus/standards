@@ -5,8 +5,8 @@ module.exports = ({ use = [], ...rest } = {}) => ({
 			loader: require.resolve('ts-loader'),
 			options: {
 				compilerOptions: {
+					declaration: false,
 					module: 'esnext',
-					noEmit: true,
 					target: 'es2020'
 				}
 			}
