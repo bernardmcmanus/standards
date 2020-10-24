@@ -1,4 +1,5 @@
 *
 !bin/**
 !lib/**
+!nodemon.js
 !scripts.js

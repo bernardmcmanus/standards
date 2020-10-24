@@ -7,12 +7,16 @@ const { tryCatch } = require('./lib/helpers');
 const pkg = require('./package.json');
 
 const nodemonSignal = tryCatch(() => {
-	const nodemonConfigPath = require.resolve('./nodemon.json', {
-		paths: [
-			process.cwd()
-		]
-	});
-	return require(nodemonConfigPath).signal;
+	try {
+		require('@bernardmcmanus/npm-scripts/nodemon').signal;
+	} catch (err) {
+		const nodemonConfigPath = require.resolve('./nodemon.json', {
+			paths: [
+				process.cwd()
+			]
+		});
+		return require(nodemonConfigPath).signal;
+	}
 }, 'SIGUSR2');
 
 module.exports = async ({

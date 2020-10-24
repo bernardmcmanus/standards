@@ -2,6 +2,7 @@ const assert = require('assert');
 const Path = require('path');
 
 const identity = require('lodash/identity');
+const memoize = require('lodash/memoize');
 const once = require('lodash/once');
 
 const Executor = require('./executor');
@@ -75,34 +76,37 @@ class Script {
 		Object.defineProperty(this, 'name', {
 			get: once(() => {
 				const ignore = new Set(['bash', '-c', 'node', 'npm-scripts', 'npx', 'exec']);
-				return [this.cmd, ...this.args]
+				return [this.cmd, ...this.getArgs()]
 					.flatMap(value => value.split(' '))
 					.find(value => !ignore.has(value));
 			})
 		});
 	}
 
-	getArgs = once((extras = []) => {
-		const resolvedArgs = [
-			...this.args,
-			...(this.appendExtrasToLastArg ? [] : extras)
-		].map(arg => {
-			switch (typeof arg) {
-				case 'function':
-					try {
-						return arg();
-					} catch (err) {
-						return err;
-					}
-				default:
-					return arg;
+	getArgs = memoize(
+		(extras = []) => {
+			const resolvedArgs = [
+				...this.args,
+				...(this.appendExtrasToLastArg ? [] : extras)
+			].map(arg => {
+				switch (typeof arg) {
+					case 'function':
+						try {
+							return arg();
+						} catch (err) {
+							return err;
+						}
+					default:
+						return arg;
+				}
+			});
+			if (this.appendExtrasToLastArg) {
+				resolvedArgs[resolvedArgs.length - 1] = `${resolvedArgs[resolvedArgs.length - 1]} ${extras.join(' ')}`;
 			}
-		});
-		if (this.appendExtrasToLastArg) {
-			resolvedArgs[resolvedArgs.length - 1] = `${resolvedArgs[resolvedArgs.length - 1]} ${extras.join(' ')}`;
-		}
-		return resolvedArgs;
-	});
+			return resolvedArgs;
+		},
+		extras => String(extras)
+	);
 
 	getRunnableScore = once(async () => {
 		let result = 2;
