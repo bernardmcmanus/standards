@@ -1,34 +1,33 @@
 /**
+ * Adapted from create-react-app InterpolateHtmlPlugin
  * @see https://github.com/facebook/create-react-app/blob/ed958938f642007645dd5ac3466db36202f8754e/packages/react-dev-utils/InterpolateHtmlPlugin.js
  */
 
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 // This webpack plugin lets us interpolate custom variables into `index.html`.
-// Usage: `new InterpolateHtmlPlugin(HtmlWebpackPlugin, { 'MY_VARIABLE': 42 })`
+// Usage: `new InterpolateHtmlPlugin({ 'MY_VARIABLE': 42 })`
 // Then, you can use %MY_VARIABLE% in your `index.html`.
 
 // It works in tandem with HtmlWebpackPlugin.
 // Learn more about creating plugins like this:
 // https://github.com/ampedandwired/html-webpack-plugin#events
 
-'use strict';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const escapeStringRegexp = require('escape-string-regexp');
 
 class InterpolateHtmlPlugin {
-  constructor(htmlWebpackPlugin, replacements) {
-    this.htmlWebpackPlugin = htmlWebpackPlugin;
+  constructor(replacements) {
     this.replacements = replacements;
   }
 
   apply(compiler) {
+    const htmlWebpackPlugin = compiler.options.plugins.find(
+      plugin => plugin.constructor === HtmlWebpackPlugin
+    );
+    if (!htmlWebpackPlugin) {
+      throw new Error('Could not find HtmlWebpackPlugin');
+    }
     compiler.hooks.compilation.tap('InterpolateHtmlPlugin', compilation => {
-      this.htmlWebpackPlugin
+      htmlWebpackPlugin
         .getHooks(compilation)
         .afterTemplateExecution.tap('InterpolateHtmlPlugin', data => {
           // Run HTML through a series of user-specified string replacements.
