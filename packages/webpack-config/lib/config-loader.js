@@ -1,13 +1,13 @@
+const Path = require('path');
+
 const interopRequireWildcard = require('@babel/runtime/helpers/interopRequireWildcard');
 
 let webpackConfigLoaderPath;
 
 try {
-	webpackConfigLoaderPath = require.resolve('./webpack.config', {
-		paths: [
-			process.cwd()
-		]
-	});
+	webpackConfigLoaderPath = require.resolve(
+		Path.join(process.cwd(), 'webpack.config')
+	);
 } catch (err) {
 	if (err.code !== 'MODULE_NOT_FOUND') {
 		throw err;

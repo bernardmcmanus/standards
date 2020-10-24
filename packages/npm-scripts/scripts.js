@@ -314,7 +314,6 @@ exporter('webpack:postinstall', () => new Script({
 	conditions: [
 		webpack
 	],
-	type: Script.OPTIONAL,
 	env: ({ NODE_ENV }) => ({
 		NODE_ENV: NODE_ENV || 'development'
 	})

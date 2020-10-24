@@ -135,7 +135,18 @@ module.exports = configLoader('app', {
 			])
 		),
 		new DefinePlugin({ 'process.browser': true }),
-		new ProgressPlugin(),
+		new ProgressPlugin(
+			development((() => {
+				let last;
+				return (percent) => {
+					const next = Math.floor(percent * 10) * 10;
+					if (last !== next) {
+						last = next;
+						console.log(`${`[webpack] ${next}%`.padEnd(14, ' ')} building`);
+					}
+				}
+			})())
+		),
 		...(hasDllBuild()
 			? getManifests().map(manifest => new DllReferencePlugin({ manifest }))
 			: []),
