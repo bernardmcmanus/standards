@@ -16,7 +16,7 @@ try {
 }
 
 const defaultConfig = {
-	ext: 'g?(raph)ql js?(on|x) ts?(x) y?(a)ml',
+	ext: 'g?(raph)ql js?(on) ts y?(a)ml',
 	watch: '**/*',
 	ignore: ['coverage/', 'dist/', 'node_modules/'],
 	env: {

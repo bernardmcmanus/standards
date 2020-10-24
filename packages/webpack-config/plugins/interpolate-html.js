@@ -20,14 +20,8 @@ class InterpolateHtmlPlugin {
   }
 
   apply(compiler) {
-    const htmlWebpackPlugin = compiler.options.plugins.find(
-      plugin => plugin.constructor === HtmlWebpackPlugin
-    );
-    if (!htmlWebpackPlugin) {
-      throw new Error('Could not find HtmlWebpackPlugin');
-    }
     compiler.hooks.compilation.tap('InterpolateHtmlPlugin', compilation => {
-      htmlWebpackPlugin
+      HtmlWebpackPlugin
         .getHooks(compilation)
         .afterTemplateExecution.tap('InterpolateHtmlPlugin', data => {
           // Run HTML through a series of user-specified string replacements.
