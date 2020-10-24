@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/npm-scripts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Opinionated scripts for npm projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
