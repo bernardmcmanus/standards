@@ -22,6 +22,13 @@ module.exports = {
 	],
 	reportUnusedDisableDirectives: true,
 	rules: {
+		'@typescript-eslint/consistent-type-assertions': [
+			'error',
+			{
+				assertionStyle: 'as',
+				objectLiteralTypeAssertions: 'allow-as-parameter',
+			},
+		],
 		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
 		'@typescript-eslint/explicit-function-return-type': [
 			'error',
