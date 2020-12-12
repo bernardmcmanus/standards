@@ -2,11 +2,16 @@
 	"name": "@bernardmcmanus/node-config-bin",
 	"version": "0.1.1",
 	"description": "An executable wrapper for https://github.com/lorenwest/node-config",
+	"repository": "github:bernardmcmanus/standards",
 	"author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
 	"homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/node-config-bin",
 	"license": "MIT",
+	"engines": {
+    "node": ">=12",
+    "npm": ">=6.9"
+  },
 	"bin": {
-		"node-config": "bin/node-config"
+		"node-config": "bin/node-config.js"
 	},
 	"scripts": {
 		"build": "PKG_TARGET=linux-x64 npm run build:target",
