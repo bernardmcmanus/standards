@@ -1,6 +1,6 @@
 {
 	"name": "@bernardmcmanus/node-config-bin",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "An executable wrapper for https://github.com/lorenwest/node-config",
 	"author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
 	"homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/node-config-bin",
