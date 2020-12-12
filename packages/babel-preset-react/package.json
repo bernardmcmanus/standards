@@ -16,6 +16,6 @@
   },
   "peerDependencies": {
     "@babel/core": "^7",
-    "react": "^16"
+    "react": "^16 | ^17"
   }
 }

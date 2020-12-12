@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "eslint": "^6 || ^7",
-    "react": "^16",
+    "react": "^16 | ^17",
     "typescript": "^3 || ^4"
   },
   "devDependencies": {
