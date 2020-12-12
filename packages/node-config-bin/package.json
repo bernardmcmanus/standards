@@ -1,0 +1,21 @@
+{
+	"name": "@bernardmcmanus/node-config-bin",
+	"version": "0.1.0",
+	"description": "An executable wrapper for https://github.com/lorenwest/node-config",
+	"author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
+	"homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/node-config-bin",
+	"license": "MIT",
+	"bin": {
+		"node-config": "bin/node-config"
+	},
+	"scripts": {
+		"build": "PKG_TARGET=linux-x64 npm run build:target",
+		"build:target": "pkg src/index.js -o dist/node-config-$PKG_TARGET -t $PKG_TARGET",
+		"prepublishOnly": "npm run build"
+	},
+	"devDependencies": {
+		"config": "^3.2.4",
+		"js-yaml": "^3.13.1",
+		"pkg": "^4.4.2"
+	}
+}
