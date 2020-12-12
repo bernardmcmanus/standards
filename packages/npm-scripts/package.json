@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/npm-scripts",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Opinionated scripts for npm projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
-    "@bernardmcmanus/webpack-config": "^0.1.9",
+    "@bernardmcmanus/webpack-config": "^0.1.10",
     "eslint": "^7.8.1",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.1",
