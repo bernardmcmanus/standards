@@ -16,9 +16,9 @@ module.exports = ({ use = [], ...rest } = {}) => ({
 			loader: require.resolve('css-loader'),
 			options: {
 				importLoaders: 1,
-				localsConvention: 'camelCase',
 				modules: pickBy(
 					{
+						exportLocalsConvention: 'camelCase',
 						getLocalIdent: development(getLocalIdent) || undefined
 					},
 					value => value !== undefined

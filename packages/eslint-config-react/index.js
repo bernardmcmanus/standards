@@ -34,6 +34,8 @@ module.exports = {
 			{ extensions: ['.jsx', '.tsx'] }
 		],
 		'react/jsx-fragments': ['error', 'syntax'],
+		'react/jsx-indent': 'off',
+		'react/jsx-indent-props': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'react/jsx-sort-props': [
 			'error',

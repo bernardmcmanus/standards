@@ -25,7 +25,21 @@ module.exports = class AssetManifestPlugin {
 				}, new Set());
 
 				const assetList = chunks
-					.sort((a, b) => b.id - a.id)
+					.sort((a, b) => {
+						if (a.name === 'runtime') {
+							return -1;
+						}
+						if (b.name === 'runtime') {
+							return 1;
+						}
+						if (a.entryModule) {
+							return 1;
+						}
+						if (b.entryModule) {
+							return -1;
+						}
+						return b.id - a.id;
+					})
 					.reduce((acc, chunk) => {
 						if (dependencyChunks.has(chunk)) {
 							chunk.files.forEach(name => {

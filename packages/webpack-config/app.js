@@ -8,10 +8,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const hash = require('object-hash');
 const once = require('lodash/once');
 const pickBy = require('lodash/pickBy');
+const throttle = require('lodash/throttle');
 
 const configLoader = require('./lib/config-loader');
 const createCssRule = require('./rules/css');
@@ -67,7 +67,7 @@ module.exports = configLoader('app', {
 				}
 			})
 		],
-		runtimeChunk: 'single',
+		runtimeChunk: false,
 		splitChunks: pickBy(
 			{
 				automaticNameDelimiter: '_',
@@ -136,16 +136,11 @@ module.exports = configLoader('app', {
 		),
 		new DefinePlugin({ 'process.browser': true }),
 		new ProgressPlugin(
-			development((() => {
-				let last;
-				return (percent) => {
-					const next = Math.floor(percent * 10) * 10;
-					if (last !== next) {
-						last = next;
-						console.log(`${`[webpack] ${next}%`.padEnd(14, ' ')} building`);
-					}
-				}
-			})())
+			development(
+				throttle((percent, ...rest) => {
+					console.log(`${`[webpack.Progress] ${Math.floor(percent * 10) * 10}%`.padEnd(14, ' ')} ${rest.join(' ')}`);
+				}, 50)
+			)
 		),
 		...(hasDllBuild()
 			? getManifests().map(manifest => new DllReferencePlugin({ manifest }))
@@ -157,23 +152,18 @@ module.exports = configLoader('app', {
 				removeScriptTypeAttributes: true,
 				removeStyleLinkTypeAttributes: true
 			}),
-			template: 'src/index.html'
+			template: 'src/index.html',
 		}),
-		new ScriptExtHtmlWebpackPlugin({ inline: 'runtime' }),
 		hasDllBuild() &&
 			new HtmlWebpackTagsPlugin({
 				links: tryCatch(
 					() => require(Path.resolve('dist/static/dll/css.json')),
 					[]
-				).map(({ url }) => ({
-					append: false,
-					path: url,
-					usePublicPath: false
-				})),
+				).map(({ url }) => ({ append: false, path: url, usePublicPath: false })),
 				scripts: tryCatch(
 					() => require(Path.resolve('dist/static/dll/js.json')),
 					[]
-				).map(({ url }) => ({ append: false, path: url, usePublicPath: false }))
+				).map(({ url }) => ({ append: false, path: url, usePublicPath: false })),
 			}),
 		new MiniCssExtractPlugin({
 			filename: '[contenthash].css',

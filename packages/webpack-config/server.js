@@ -2,7 +2,7 @@ const Path = require('path');
 const http = require('http');
 const { promisify } = require('util');
 
-const parseArgv = require('yargs-parser');
+const config = require('config');
 const Koa = require('koa');
 const conditional = require('koa-conditional-get');
 const etag = require('koa-etag');
@@ -12,10 +12,7 @@ const logger = require('koa-logger');
 
 const createWebpackMiddleware = require('./middleware');
 
-const {
-	_: [port = 3000]
-} = parseArgv(process.argv.slice(2));
-
+const port = config.get('port');
 const app = new Koa();
 
 app.on('error', err => {
