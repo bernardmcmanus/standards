@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-config-react",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Common eslint configuration for React projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
