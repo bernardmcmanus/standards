@@ -28,7 +28,7 @@ class InterpolateHtmlPlugin {
           Object.keys(this.replacements).forEach(key => {
             const value = this.replacements[key];
             data.html = data.html.replace(
-              new RegExp('%' + escapeStringRegexp(key) + '%', 'g'),
+              new RegExp('/?%' + escapeStringRegexp(key) + '%/?', 'g'),
               value
             );
           });
