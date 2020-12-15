@@ -1,4 +1,6 @@
 const koaWebpack = require('koa-webpack');
+const get = require('lodash/get');
+const memoize = require('lodash/memoize');
 const rimraf = require('rimraf');
 const webpack = require('webpack');
 
@@ -17,7 +19,7 @@ const nodemonSignal = tryCatch(() => {
 		});
 		return require(nodemonConfigPath).signal;
 	}
-}, 'SIGUSR2');
+}) || 'SIGUSR2';
 
 module.exports = async ({
 	serverPort,
@@ -34,8 +36,9 @@ module.exports = async ({
 	}
 
 	const handleCompilationFailure = (errors, restart) => {
+		const memoizedErrorLog = memoize(err => logger.error(err));
 		errors.forEach(err => {
-			logger.error(err);
+			memoizedErrorLog(get(err, ['module', 'error']) || err.message || err);
 		});
 		// Dump the hardsource cache if compilation fails
 		rimraf.sync('node_modules/.cache/hard-source');
@@ -49,7 +52,8 @@ module.exports = async ({
 
 	compiler.hooks.hardSourceLog.tap(pkg.name, ({ data, level }) => {
 		if (level === 'error' || data.error) {
-			handleCompilationFailure([data.error], true);
+			const err = get(data, ['parityRoot', 'reason', 'message']);
+			handleCompilationFailure([err], true);
 		}
 	});
 

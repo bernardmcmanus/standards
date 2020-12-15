@@ -50,7 +50,7 @@ module.exports = configLoader('dll', {
 		],
 		occurrenceOrder: true,
 		namedChunks: false,
-		runtimeChunk: false,
+		runtimeChunk: 'single',
 		splitChunks: {
 			automaticNameDelimiter: '_',
 			cacheGroups: {
@@ -86,13 +86,13 @@ module.exports = configLoader('dll', {
 		new ProgressPlugin(),
 		new AssetManifestPlugin({
 			filename: 'css.json',
+			assets: ({ name }) => /\.css$/.test(name),
 			chunks: ({ extraAsync, name }) => /(^|_)css(_|$)/.test(name) || (!name && !extraAsync),
-			assets: ({ name }) => /\.css$/.test(name)
 		}),
 		new AssetManifestPlugin({
 			filename: 'js.json',
-			chunks: ({ extraAsync, name }) => /(^|_)js(_|$)/.test(name) || (!name && !extraAsync),
-			assets: ({ name }) => /\.js$/.test(name)
+			assets: ({ name }) => /\.js$/.test(name),
+			chunks: ({ extraAsync, name }) => name === 'runtime' || /(^|_)js(_|$)/.test(name) || (!name && !extraAsync),
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[contenthash].css',

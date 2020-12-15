@@ -1,3 +1,6 @@
+const Path = require('path');
+const fs = require('fs');
+
 const noop = require('lodash/noop');
 
 const { createExporter } = require('./lib/helpers');
@@ -42,12 +45,16 @@ const stylelint = exporter('stylelint', () => new Script({
 }))();
 
 const nodemon = exporter('nodemon', () => new Script({
-	cmd: 'bash',
+	cmd: 'nodemon',
 	args: [
-		'-c',
-		`exec nodemon --config <(node -e 'console.log(JSON.stringify(require("${require.resolve('./lib/nodemon')}"), null, 2))')`
+		'--config',
+		() => {
+			const configPath = Path.resolve(__dirname, '..', '.nodemon.json');
+			const config = require('./lib/nodemon');
+			fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+			return configPath;
+		}
 	],
-	appendExtrasToLastArg: true,
 	conditions: [
 		{
 			cmd: 'which',
