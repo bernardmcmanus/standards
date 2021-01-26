@@ -38,7 +38,7 @@ module.exports = async ({
 	const handleCompilationFailure = (errors, restart) => {
 		const memoizedErrorLog = memoize(err => logger.error(err));
 		errors.forEach(err => {
-			memoizedErrorLog(get(err, ['module', 'error']) || err.message || err);
+			memoizedErrorLog(get(err, ['module', 'error']) || get(err, ['message']) || err);
 		});
 		// Dump the hardsource cache if compilation fails
 		rimraf.sync('node_modules/.cache/hard-source');
