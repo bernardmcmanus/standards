@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/webpack-config",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Common webpack configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
