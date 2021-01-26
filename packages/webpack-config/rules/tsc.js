@@ -1,8 +1,9 @@
-module.exports = ({ use = [], ...rest } = {}) => ({
+module.exports = ({ use = [], options = {}, ...rest } = {}) => ({
 	test: /(\.d)?\.tsx?$/,
 	use: [
 		{
-			loader: require.resolve('ts-loader')
+			loader: require.resolve('ts-loader'),
+			options
 		},
 		...use
 	],

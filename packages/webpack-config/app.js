@@ -179,7 +179,11 @@ module.exports = configLoader('app', {
 	].filter(Boolean),
 	module: {
 		rules: [
-			createTscRule(),
+			createTscRule({
+				options: {
+					transpileOnly: development()
+				}
+			}),
 			createBabelRule({
 				exclude: /\/(node_modules)\/.+\.js$/
 			}),
