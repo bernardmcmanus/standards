@@ -1,4 +1,12 @@
-const { version: reactVersion } = require('react/package.json');
+let reactVersion;
+try {
+	({ version: reactVersion } = require('react/package.json'));
+} catch (err) {
+	if (err.code !== 'MODULE_NOT_FOUND') {
+		throw err;
+	}
+	console.warn('WARN: Could not determine react version');
+}
 
 const IMPORT_EXTENSIONS = Object.freeze(['.js', '.jsx', '.ts', '.tsx']);
 
@@ -46,6 +54,18 @@ module.exports = {
 				reservedFirst: true
 			}
 		],
+		'react/jsx-wrap-multilines': [
+			'error',
+			{
+				declaration: 'parens-new-line',
+				assignment: 'parens-new-line',
+				return: 'parens-new-line',
+				arrow: 'parens-new-line',
+				condition: 'parens-new-line',
+				logical: 'parens-new-line',
+				prop: 'ignore',
+			}
+		],
 		'react/prefer-stateless-function': 'error',
 		'react/sort-comp': 'off',
 		'react/state-in-constructor': ['error', 'never'],
@@ -69,7 +89,7 @@ module.exports = {
 	],
 	settings: {
 		'import/parsers': {
-			'babel-eslint': ['.js', '.jsx'],
+			'@babel/eslint-parser': ['.js', '.jsx'],
 			'@typescript-eslint/parser': ['.ts', '.tsx']
 		},
 		'import/resolver': {

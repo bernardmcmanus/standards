@@ -1,6 +1,6 @@
 {
 	"name": "@bernardmcmanus/node-config-bin",
-	"version": "0.1.8",
+	"version": "0.1.9",
 	"description": "An executable wrapper for https://github.com/lorenwest/node-config",
 	"repository": "github:bernardmcmanus/standards",
 	"author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -8,7 +8,7 @@
 	"license": "MIT",
 	"engines": {
 		"node": ">=12",
-		"npm": ">=6.9"
+		"npm": ">=6"
 	},
 	"bin": {
 		"node-config": "bin/node-config.js"

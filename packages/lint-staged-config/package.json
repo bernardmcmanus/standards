@@ -1,16 +1,16 @@
 {
   "name": "@bernardmcmanus/lint-staged-config",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Custom lint-staged configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/lint-staged-config",
   "license": "MIT",
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.9"
+    "node": ">=14",
+    "npm": ">=6"
   },
   "peerDependencies": {
-    "lint-staged": "^9 || ^10"
+    "lint-staged": "^9 || ^10 || ^11"
   }
 }

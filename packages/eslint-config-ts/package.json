@@ -1,21 +1,21 @@
 {
   "name": "@bernardmcmanus/eslint-config-ts",
-  "version": "0.1.12",
+  "version": "0.2.0",
   "description": "Common eslint configuration for TypeScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/eslint-config-ts",
   "license": "MIT",
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.9"
+    "node": ">=14",
+    "npm": ">=6"
   },
   "dependencies": {
-    "@bernardmcmanus/eslint-config-js": "^0.1.3",
+    "@bernardmcmanus/eslint-config-js": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "eslint-config-airbnb-base": "14.2.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-typescript-sort-keys": "^1.3.0"
   },
   "peerDependencies": {

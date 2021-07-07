@@ -1,18 +1,18 @@
 {
   "name": "@bernardmcmanus/babel-preset-ts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Common babel configuration for TypeScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/babel-preset-ts",
   "license": "MIT",
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.9"
+    "node": ">=14",
+    "npm": ">=6"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.10.4",
-    "@bernardmcmanus/babel-preset-js": "^0.1.1"
+    "@bernardmcmanus/babel-preset-js": "^0.1.2"
   },
   "peerDependencies": {
     "@babel/core": "^7",

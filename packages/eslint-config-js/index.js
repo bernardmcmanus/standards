@@ -8,7 +8,7 @@ const {
 const IMPORT_EXTENSIONS = ['.js'];
 
 module.exports = {
-	parser: 'babel-eslint',
+	parser: '@babel/eslint-parser',
 	plugins: ['babel', 'simple-import-sort', 'sort-keys-fix'],
 	extends: [
 		'airbnb-base',
@@ -20,9 +20,10 @@ module.exports = {
 		'prettier/standard',
 	],
 	ignorePatterns: [
+		'**/__generated__/**',
 		'**/coverage/**',
 		'**/dist/**',
-		'**/__generated__/**'
+		'**/generated/**'
 	],
 	rules: {
 		'@bernardmcmanus/no-extraneous-dependencies': [
@@ -32,8 +33,7 @@ module.exports = {
 					'**/*.config.*',
 					'**/*.spec.*',
 					'**/*.stories.*',
-					'**/stories/*',
-					'**/{.storybook,dev,mocks,scripts,spec,test,webpack}/**',
+					'**/{.storybook,dev,mocks,scripts,spec,stories,test,webpack}/**',
 				],
 			},
 		],
@@ -154,7 +154,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ['{spec,test}/**'],
+			files: ['**/{spec,test}/**', '**/*.{spec,test}.*'],
 			env: {
 				jasmine: true,
 				jest: true,
@@ -163,7 +163,7 @@ module.exports = {
 	],
 	settings: {
 		'import/parsers': {
-			'babel-eslint': ['.js'],
+			'@babel/eslint-parser': ['.js'],
 		},
 		'import/resolver': {
 			node: {

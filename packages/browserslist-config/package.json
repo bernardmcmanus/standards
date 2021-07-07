@@ -1,13 +1,13 @@
 {
   "name": "@bernardmcmanus/browserslist-config",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Common browserslist configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/browserslist-config",
   "license": "MIT",
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.9"
+    "node": ">=14",
+    "npm": ">=6"
   }
 }

@@ -20,18 +20,7 @@ const eslint = exporter('eslint', () => new Script({
 }))();
 
 const prettier = exporter('prettier', () => new Script({
-	cmd: 'bash',
-	args: [
-		'-c',
-		'exec prettier'
-	],
-	appendExtrasToLastArg: true,
-	conditions: [
-		{
-			cmd: 'which',
-			args: ['prettier']
-		}
-	]
+	cmd: 'prettier'
 }))();
 
 const stylelint = exporter('stylelint', () => new Script({

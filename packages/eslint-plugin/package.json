@@ -1,14 +1,14 @@
 {
   "name": "@bernardmcmanus/eslint-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Custom eslint rules",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/eslint-plugin",
   "license": "MIT",
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.9"
+    "node": ">=14",
+    "npm": ">=6"
   },
   "dependencies": {
     "lodash.get": "^4.4.2",

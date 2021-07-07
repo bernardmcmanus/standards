@@ -1,14 +1,14 @@
 {
   "name": "@bernardmcmanus/tsconfig",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Common Typescript configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/tsconfig",
   "license": "MIT",
   "engines": {
-    "node": ">=10",
-    "npm": ">=6.9"
+    "node": ">=14",
+    "npm": ">=6"
   },
   "main": "tsconfig.json",
   "peerDependencies": {
