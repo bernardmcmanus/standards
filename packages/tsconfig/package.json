@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/tsconfig",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Common Typescript configuration",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",

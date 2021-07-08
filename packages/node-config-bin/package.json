@@ -1,14 +1,14 @@
 {
 	"name": "@bernardmcmanus/node-config-bin",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"description": "An executable wrapper for https://github.com/lorenwest/node-config",
 	"repository": "github:bernardmcmanus/standards",
 	"author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
 	"homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/node-config-bin",
 	"license": "MIT",
 	"publishConfig": {
-    "access": "public"
-  },
+		"access": "public"
+	},
 	"engines": {
 		"node": ">=12",
 		"npm": ">=6"

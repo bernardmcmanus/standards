@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-config-react",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Common eslint configuration for React projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -14,7 +14,7 @@
     "npm": ">=6"
   },
   "dependencies": {
-    "@bernardmcmanus/eslint-config-ts": "^0.2.2",
+    "@bernardmcmanus/eslint-config-ts": "^0.2.3",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
