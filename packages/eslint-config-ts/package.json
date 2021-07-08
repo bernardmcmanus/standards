@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-config-ts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Common eslint configuration for TypeScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
@@ -11,7 +11,7 @@
     "npm": ">=6"
   },
   "dependencies": {
-    "@bernardmcmanus/eslint-config-js": "^0.2.1",
+    "@bernardmcmanus/eslint-config-js": "^0.2.2",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "eslint-config-airbnb-base": "14.2.0",
