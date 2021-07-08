@@ -6,6 +6,9 @@
 	"author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
 	"homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/node-config-bin",
 	"license": "MIT",
+	"publishConfig": {
+    "access": "public"
+  },
 	"engines": {
 		"node": ">=12",
 		"npm": ">=6"

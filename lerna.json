@@ -5,11 +5,6 @@
         "--no-package-lock"
       ]
     },
-    "publish": {
-      "npmClientArgs": [
-        "--access public"
-      ]
-    },
     "version": {
       "allowBranch": ["master"],
       "gitRemote": ["origin"]

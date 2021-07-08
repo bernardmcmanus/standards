@@ -1,9 +1,7 @@
 FROM node:lts-alpine
 
 ENV NPM_TOKEN=""
-RUN \
-	echo '@bernardmcmanus:registry=https://npm.pkg.github.com/' >> /home/node/.npmrc; \
-	echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> /home/node/.npmrc
+RUN echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> /home/node/.npmrc
 
 RUN mkdir -p /src && chown node:node /src
 WORKDIR /src
