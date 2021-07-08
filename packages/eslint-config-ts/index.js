@@ -15,6 +15,9 @@ module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 2020,
+		// Don't require babel config
+		// @see https://www.npmjs.com/package/@babel/eslint-parser
+		requireConfigFile: false,
 		sourceType: 'module'
 	},
 	plugins: [

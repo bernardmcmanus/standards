@@ -9,6 +9,9 @@ const IMPORT_EXTENSIONS = ['.js'];
 
 module.exports = {
 	parser: '@babel/eslint-parser',
+	parserOptions: {
+		requireConfigFile: true
+	},
 	plugins: ['babel', 'simple-import-sort', 'sort-keys-fix'],
 	extends: [
 		'airbnb-base',
