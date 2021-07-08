@@ -16,8 +16,7 @@ module.exports = {
 		'plugin:import/errors',
 		'plugin:import/warnings',
 		'plugin:@bernardmcmanus/eslint-plugin/default',
-		'prettier',
-		'prettier/standard',
+		'prettier'
 	],
 	ignorePatterns: [
 		'**/__generated__/**',

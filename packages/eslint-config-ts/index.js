@@ -10,7 +10,7 @@ module.exports = {
 	extends: [
 		'@bernardmcmanus/eslint-config-js',
 		'plugin:@typescript-eslint/recommended',
-		'prettier/@typescript-eslint',
+		'prettier'
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
