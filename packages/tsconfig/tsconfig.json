@@ -5,6 +5,10 @@
     "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    /**
+     * @see https://devblogs.microsoft.com/typescript/announcing-typescript-4-4/#exact-optional-property-types
+     */
+    "exactOptionalPropertyTypes": false,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -17,6 +21,10 @@
     "skipLibCheck": false,
     "sourceMap": true,
     "strict": true,
-    "target": "es2019"
+    "target": "es2019",
+    /**
+     * @see https://devblogs.microsoft.com/typescript/announcing-typescript-4-4/#use-unknown-catch-variables
+     */
+    "useUnknownInCatchVariables": false
   }
 }
