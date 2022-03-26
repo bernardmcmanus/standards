@@ -15,18 +15,18 @@
   },
   "dependencies": {
     "@bernardmcmanus/eslint-config-js": "^0.2.4",
-    "@typescript-eslint/eslint-plugin": "^4.1.0",
-    "@typescript-eslint/parser": "^4.1.0",
-    "eslint-config-airbnb-base": "14.2.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-typescript-sort-keys": "^1.3.0"
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-typescript-sort-keys": "^2.1.0"
   },
   "peerDependencies": {
-    "eslint": "^6 || ^7",
+    "eslint": "^7 || ^8",
     "typescript": "^3 || ^4"
   },
   "devDependencies": {
-    "eslint": "^7.8.1",
-    "typescript": "^4.0.2"
+    "eslint": "^8.12.0",
+    "typescript": "^4.6.3"
   }
 }

@@ -39,7 +39,8 @@ module.exports = {
 				],
 			},
 		],
-		'simple-import-sort/sort': [
+		'simple-import-sort/exports': 'off',
+		'simple-import-sort/imports': [
 			'error',
 			{
 				groups: [
@@ -73,6 +74,7 @@ module.exports = {
 				tsx: 'never',
 			},
 		],
+		'import/no-relative-packages': 'off',
 		/**
 		 * Ignore imports with a resource query (i.e. icon.svg?inline)
 		 */
@@ -111,6 +113,11 @@ module.exports = {
 			},
 		],
 		'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+		'no-restricted-exports': ['error', {
+			"restrictedNamedExports": [
+				"then"
+			]
+		}],
 		'no-restricted-syntax': airbnbBaseStyleRules['no-restricted-syntax'].filter(
 			(value) =>
 				typeof value !== 'object' || value.selector !== 'ForOfStatement',
