@@ -37,6 +37,16 @@ module.exports = {
 			'error',
 			{ allowExpressions: true },
 		],
+		'@typescript-eslint/explicit-module-boundary-types': [
+			'error',
+			{
+				allowArgumentsExplicitlyTypedAsAny: false,
+				allowDirectConstAssertionInArrowFunctions: true,
+				allowedNames: [],
+				allowHigherOrderFunctions: true,
+				allowTypedFunctionExpressions: true,
+			},
+		],
 		'@typescript-eslint/member-delimiter-style': [
 			'error',
 			{
@@ -136,6 +146,7 @@ module.exports = {
 		{
 			files: ['{dev,mocks,scripts,spec,test}/**'],
 			rules: {
+				'@typescript-eslint/explicit-module-boundary-types': 'off',
 				'@typescript-eslint/no-non-null-assertion': 'off',
 			},
 		},

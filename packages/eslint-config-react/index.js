@@ -19,7 +19,7 @@ module.exports = {
 	env: {
 		browser: true
 	},
-	plugins: ['react-hooks'],
+	plugins: ['react', 'react-hooks'],
 	rules: {
 		/**
 		 * jsx-a11y/label-has-for is deprecated in favor of jsx-a11y/label-has-associated-control
@@ -27,16 +27,30 @@ module.exports = {
 		 */
 		'jsx-a11y/label-has-for': 'off',
 		'jsx-a11y/label-has-associated-control': [
-      "error",
-      {
-        "labelComponents": [],
-        "labelAttributes": [],
-        "controlComponents": [],
-        "assert": "both",
-        "depth": 25
-      }
-    ],
+			"error",
+			{
+				"labelComponents": [],
+				"labelAttributes": [],
+				"controlComponents": [],
+				"assert": "both",
+				"depth": 25
+			}
+		],
 		'max-classes-per-file': ['error', 1],
+		'react/function-component-definition': [
+			'error',
+			{
+				namedComponents: [
+					'arrow-function',
+					'function-declaration',
+					'function-expression'
+				],
+				unnamedComponents: [
+					'arrow-function',
+					'function-expression',
+				]
+			}
+		],
 		'react/jsx-filename-extension': [
 			'error',
 			{ extensions: ['.jsx', '.tsx'] }
@@ -44,6 +58,9 @@ module.exports = {
 		'react/jsx-fragments': ['error', 'syntax'],
 		'react/jsx-indent': 'off',
 		'react/jsx-indent-props': 'off',
+		'react/jsx-no-useless-fragment': ['error', {
+			allowExpressions: true,
+		}],
 		'react/jsx-props-no-spreading': 'off',
 		'react/jsx-sort-props': [
 			'error',
@@ -65,6 +82,10 @@ module.exports = {
 				logical: 'parens-new-line',
 				prop: 'ignore',
 			}
+		],
+		'react/no-unstable-nested-components': [
+			'error',
+			{ allowAsProps: true },
 		],
 		'react/prefer-stateless-function': 'error',
 		'react/sort-comp': 'off',
