@@ -63,6 +63,12 @@ module.exports = {
 			{ requireReturnForObjectLiteral: false },
 		],
 		'babel/no-invalid-this': 'error',
+		camelcase: ['error', {
+			properties: 'always',
+			ignoreDestructuring: false,
+			ignoreImports: false,
+			ignoreGlobals: false,
+		}],
 		curly: ['error', 'all'],
 		'import/extensions': [
 			'error',
