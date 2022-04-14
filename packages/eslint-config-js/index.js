@@ -47,7 +47,7 @@ module.exports = {
 					// Side-effects
 					['^\\u0000'],
 					// Builtins
-					[`^(${require('module').builtinModules.join('|')})(/|$)`],
+					[`^(${require('module').builtinModules.join('|')})(/.*|$)`],
 					// Scoped NPM Packages
 					['^@?\\w'],
 					// NPM Packages
