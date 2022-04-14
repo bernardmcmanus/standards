@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-config-js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Common eslint configuration for JavaScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
