@@ -18,12 +18,12 @@
 	},
 	"scripts": {
 		"build": "PKG_TARGET=alpine-x64 npm run build:target",
-		"build:target": "pkg src/index.js -o dist/node-config-$PKG_TARGET -t $PKG_TARGET",
+		"build:target": "pkg src/index.js --debug --output dist/node-config-$PKG_TARGET --public --public-packages '*' -t $PKG_TARGET",
 		"prepublishOnly": "npm run build"
 	},
 	"devDependencies": {
 		"config": "^3.2.4",
 		"js-yaml": "^3.13.1",
-		"pkg": "^4.4.2"
+		"pkg": "^5.7.0"
 	}
 }
