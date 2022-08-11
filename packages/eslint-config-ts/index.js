@@ -33,6 +33,7 @@ module.exports = {
 			},
 		],
 		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
+		'@typescript-eslint/default-param-last': ['error'],
 		'@typescript-eslint/explicit-function-return-type': [
 			'error',
 			{ allowExpressions: true },
@@ -96,6 +97,8 @@ module.exports = {
 			}
 		],
 		'@typescript-eslint/no-useless-constructor': 'error',
+
+		'default-param-last': 'off',
 
 		'no-shadow': 'off',
 		'no-unused-vars': 'off',
