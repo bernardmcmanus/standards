@@ -52,21 +52,6 @@ const nodemon = exporter('nodemon', () => new Script({
 	]
 }))();
 
-const webpack = exporter('webpack', () => new Script({
-	cmd: 'bash',
-	args: [
-		'-c',
-		'exec node -r esm `which webpack`'
-	],
-	appendExtrasToLastArg: true,
-	conditions: [
-		{
-			cmd: 'which',
-			args: ['webpack']
-		}
-	]
-}))();
-
 const tsc = exporter('tsc', () => new Script({
 	cmd: 'tsc',
 	conditions: [
@@ -244,71 +229,6 @@ exporter('start', () => new Script({
 	],
 	conditions: [
 		nodemon
-	],
-	env: ({ NODE_ENV }) => ({
-		NODE_ENV: NODE_ENV || 'development'
-	})
-}));
-
-/**
- * start webpack dev server
- */
-exporter('webpack:start', () => new Script({
-	cmd: 'npm-scripts',
-	args: [
-		'start',
-		() => require.resolve('@bernardmcmanus/webpack-config/server')
-	],
-	conditions: [
-		nodemon,
-		webpack
-	]
-}));
-
-const webpackBuildApp = exporter('webpack:build:app', () => new Script({
-	cmd: 'npm-scripts',
-	args: [
-		'webpack',
-		'--',
-		'--config',
-		() => require.resolve('@bernardmcmanus/webpack-config/app')
-	],
-	conditions: [
-		webpack
-	],
-	env: ({ NODE_ENV }) => ({
-		NODE_ENV: NODE_ENV || 'production'
-	})
-}))();
-
-const webpackBuildDll = exporter('webpack:build:dll', () => new Script({
-	cmd: 'npm-scripts',
-	args: [
-		'webpack',
-		'--',
-		'--config',
-		() => require.resolve('@bernardmcmanus/webpack-config/dll')
-	],
-	conditions: [
-		webpack
-	],
-	env: ({ NODE_ENV }) => ({
-		NODE_ENV: NODE_ENV || 'production'
-	})
-}))();
-
-exporter('webpack:build', () => new SequentialSet([
-	webpackBuildDll,
-	webpackBuildApp,
-]));
-
-exporter('webpack:postinstall', () => new Script({
-	cmd: 'npm-scripts',
-	args: [
-		'webpack:build:dll'
-	],
-	conditions: [
-		webpack
 	],
 	env: ({ NODE_ENV }) => ({
 		NODE_ENV: NODE_ENV || 'development'
