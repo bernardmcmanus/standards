@@ -1,7 +1,7 @@
 {
   "name": "@bernardmcmanus/webpack-config",
   "version": "0.1.18",
-  "description": "Common webpack configuration",
+  "description": "Opinionated configuration for webpack UI projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
   "homepage": "https://github.com/bernardmcmanus/standards/tree/master/packages/webpack-config",
