@@ -17,11 +17,12 @@
 		"node-config": "bin/node-config.js"
 	},
 	"scripts": {
-		"build": "PKG_TARGET=alpine-x64 npm run build:target",
-		"build:target": "pkg src/index.js --debug --output dist/node-config-$PKG_TARGET --public --public-packages '*' -t $PKG_TARGET",
-		"prepublishOnly": "npm run build"
+		"build": "export PKG_TARGET=`node sh/target` && npm run build:bin && npm run build:cp",
+		"build:bin": "pkg index.js --debug --output dist/node-config-$PKG_TARGET --public --public-packages '*' -t $PKG_TARGET",
+		"build:cp": "cp dist/node-config-$PKG_TARGET dist/node-config",
+		"postinstall": "npm run build"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"config": "^3.2.4",
 		"js-yaml": "^3.13.1",
 		"pkg": "^5.7.0"
