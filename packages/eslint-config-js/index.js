@@ -69,6 +69,7 @@ module.exports = {
 			ignoreImports: false,
 			ignoreGlobals: false,
 		}],
+		'class-methods-use-this': 'off',
 		curly: ['error', 'all'],
 		'import/extensions': [
 			'error',
@@ -93,6 +94,7 @@ module.exports = {
 			},
 		],
 		'import/order': 'off',
+		'import/prefer-default-export': 'off',
 		/**
 		 * FIXME: Maybe one day prettier will support this
 		 * @see https://github.com/prettier/prettier/issues/1622
@@ -112,6 +114,7 @@ module.exports = {
 		'new-cap': ['error', { newIsCap: true, capIsNew: false, properties: true }],
 		'no-await-in-loop': 'off',
 		'no-console': ['error', { allow: ['warn', 'error'] }],
+		'no-continue': 'off',
 		'no-fallthrough': [
 			'error',
 			{

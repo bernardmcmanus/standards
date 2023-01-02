@@ -14,7 +14,6 @@ module.exports = {
 	extends: [
 		'airbnb',
 		'@bernardmcmanus/eslint-config-ts',
-		'prettier',
 	],
 	env: {
 		browser: true
