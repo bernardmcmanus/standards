@@ -32,7 +32,7 @@ module.exports = {
 			},
 		],
 		'@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-		'@typescript-eslint/default-param-last': ['error'],
+		'@typescript-eslint/default-param-last': 'off',
 		'@typescript-eslint/explicit-function-return-type': [
 			'error',
 			{ allowExpressions: true },
