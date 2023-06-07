@@ -15,6 +15,6 @@
   },
   "main": "tsconfig.json",
   "peerDependencies": {
-    "typescript": "^3 || ^4"
+    "typescript": "^3 || ^4 || ^5"
   }
 }
