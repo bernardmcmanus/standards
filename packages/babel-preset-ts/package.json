@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/babel-preset-ts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Common babel configuration for TypeScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
