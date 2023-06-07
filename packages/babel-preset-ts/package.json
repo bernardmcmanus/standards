@@ -19,6 +19,6 @@
   },
   "peerDependencies": {
     "@babel/core": "^7",
-    "typescript": "^3 || ^4"
+    "typescript": "^3 || ^4 || ^5"
   }
 }
