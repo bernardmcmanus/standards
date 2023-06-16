@@ -63,6 +63,7 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 'off',
 		'@typescript-eslint/no-empty-interface': 'warn',
 		'@typescript-eslint/no-explicit-any': 'error',
+		'@typescript-eslint/no-floating-promises': 'error',
 		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-unused-vars': [
 			'error',
