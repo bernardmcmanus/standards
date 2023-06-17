@@ -13,6 +13,7 @@ module.exports = {
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
+		project: 'tsconfig.json',
 		ecmaVersion: 2020,
 		// Don't require babel config
 		// @see https://www.npmjs.com/package/@babel/eslint-parser
@@ -63,7 +64,12 @@ module.exports = {
 		'@typescript-eslint/no-empty-function': 'off',
 		'@typescript-eslint/no-empty-interface': 'warn',
 		'@typescript-eslint/no-explicit-any': 'error',
-		'@typescript-eslint/no-floating-promises': 'error',
+		'@typescript-eslint/no-floating-promises': [
+			'error',
+			{
+				ignoreIIFE: true,
+			},
+		],
 		'@typescript-eslint/no-shadow': 'error',
 		'@typescript-eslint/no-unused-vars': [
 			'error',
