@@ -1,6 +1,6 @@
 {
   "name": "@bernardmcmanus/eslint-config-ts",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Common eslint configuration for TypeScript projects",
   "repository": "github:bernardmcmanus/standards",
   "author": "Bernard McManus <bernard@mcmanus.email> (https://github.com/bernardmcmanus)",
