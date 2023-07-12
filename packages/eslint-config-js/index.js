@@ -33,9 +33,10 @@ module.exports = {
 			{
 				devDependencies: [
 					'**/*.config.*',
+					'**/*.fixture.*',
 					'**/*.spec.*',
 					'**/*.stories.*',
-					'**/{.storybook,dev,mocks,scripts,spec,stories,test,webpack}/**',
+					'**/{.storybook,dev,fixtures,mocks,scripts,spec,stories,test(s?),webpack}/**',
 				],
 			},
 		],
