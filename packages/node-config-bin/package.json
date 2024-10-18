@@ -23,8 +23,8 @@
 		"postinstall": "npm run build"
 	},
 	"dependencies": {
+		"@yao-pkg/pkg": "^5.15.0",
 		"config": "^3.2.4",
-		"js-yaml": "^3.13.1",
-		"pkg": "^5.7.0"
+		"js-yaml": "^3.13.1"
 	}
 }
