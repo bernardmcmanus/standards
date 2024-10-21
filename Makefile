@@ -7,7 +7,7 @@ all: build test
 
 .PHONY: build
 build:
-	@docker build -t $(DOCKER_REPO):$(DOCKER_TAG) .
+	@docker build --pull -t $(DOCKER_REPO):$(DOCKER_TAG) .
 
 .PHONY: test
 test:
